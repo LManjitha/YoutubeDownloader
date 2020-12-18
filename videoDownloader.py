@@ -1,6 +1,4 @@
-import time
 from pytube import YouTube
-import sys
 
 def videoDownloader():
     link = input("Enter the link : ")
@@ -25,21 +23,13 @@ def videoDownloader():
         print("Available audios")
         print("-------------------------")
         for i in audioStreams:
-            print(audioStreams.index(i) + 1, " ", i.mime_type, "  ", i.abr)
+            print(audioStreams.index(i) + 1," ", i.mime_type,"  ", i.abr)
         q_num = int(input("Enter a number : "))
         for j in audioStreams:
             if audioStreams.index(j) == q_num - 1:
-                d_audio = i
-                c = 1
-                while c < 5:
-                    txt = "Downloading" + "." * c
-                    c += 1
-                    sys.stdout.write('\r' + txt)
-                    time.sleep(1)
-                    if (d_audio.download("C:\\Users\\ACER\\Downloads")):
-                        c = 6
-                    if c == 4:
-                        c = 0
+                d_audio=i
+                print("Downloading...")
+                d_audio.download("C:\\Users\\ACER\\Downloads")
                 print("Download completed!!")
 
     elif aOrv.lower() == 'v':
@@ -53,6 +43,7 @@ def videoDownloader():
         for j in videoStreams:
             if videoStreams.index(j) == q_num - 1:
                 d_video = j
+
                 print("Downloading...")
                 d_video.download("C:\\Users\\ACER\\Downloads")
                 print("Download completed!!")
