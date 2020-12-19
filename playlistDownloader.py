@@ -1,7 +1,8 @@
 from pytube import Playlist
-
+from pathlib import Path
 def playlistDownloader():
     link = input("Enter the link of the playlist : ")
+    download_path = str(Path.home()/"Downloads")
     try:
         pl = Playlist(link)
     except:
@@ -9,14 +10,13 @@ def playlistDownloader():
 
     print("Playlist Title : ",pl.title)
     print('Number of videos in playlist:',len(pl.video_urls))
+    print("Downloading...")
 
     for p in pl.videos:
         prog_streams = p.streams.filter(progressive=True)
         q720 = prog_streams.get_by_resolution('720p')
-        #print(q720)
-        #print(p.title)
-        q720.download("C:\\Users\\ACER\\Downloads")
-        print(f'{p.title}'," Downloaded!")
+        q720.download(download_path)
+        print(f'{p.title}'," --Downloaded!")
     print("Download Completed!!")
 
 
