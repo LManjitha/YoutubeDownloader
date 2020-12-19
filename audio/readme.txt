@@ -1,0 +1,1 @@
+This folder is used to store audio files before merge with video.
